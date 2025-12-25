@@ -15,6 +15,7 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "Hospitals", path: "/hospitals" },
   { name: "First Aid", path: "/first-aid" },
+  { name: "Prescription", path: "/prescription" },
   { name: "Emergency Contacts", path: "/contacts" },
 ];
 
