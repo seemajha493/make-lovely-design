@@ -30,7 +30,12 @@
     "learnMore": "Learn More",
     "getDirections": "Get Directions",
     "call": "Call",
-    "bookAppointment": "Book Appointment"
+    "bookAppointment": "Book Appointment",
+    "available247": "Available 24/7 Emergency Support",
+    "limited": "Limited",
+    "beds": "Beds",
+    "icu": "ICU",
+    "about": "About"
   },
   "header": {
     "emergencyHelp": "Emergency",
@@ -44,45 +49,68 @@
     "myProfile": "My Profile"
   },
   "hero": {
-    "title": "Your Health, Our Priority",
-    "subtitle": "Access emergency services, find nearby hospitals, and get first aid guidance instantly with MediBridge",
-    "findHospitals": "Find Hospitals",
-    "emergencyCall": "Emergency Call"
+    "title": "Your Healthcare",
+    "titleHighlight": "Bridge to Better Health",
+    "subtitle": "Instantly locate nearby hospitals, order medicines, access first aid guides, and connect with healthcare services. Your trusted healthcare companion.",
+    "findHospitals": "Find Nearby Hospitals",
+    "searchSymptoms": "Search Symptoms",
+    "statHospitals": "Hospitals",
+    "statAvailable": "Available",
+    "statLivesHelped": "Lives Helped"
   },
   "emergencyServices": {
     "title": "Emergency Services",
-    "subtitle": "Quick access to critical healthcare services when you need them most",
-    "nearbyHospitals": "Nearby Hospitals",
-    "nearbyHospitalsDesc": "Find hospitals and emergency rooms near your location",
-    "firstAidGuides": "First Aid Guides",
-    "firstAidGuidesDesc": "Step-by-step emergency first aid instructions",
+    "subtitle": "Quick access to all the help you need during medical emergencies",
+    "hospitalFinder": "Hospital Finder",
+    "hospitalFinderDesc": "Find nearby hospitals with real-time bed availability and wait times",
+    "firstAidGuide": "First Aid Guide",
+    "firstAidGuideDesc": "Step-by-step emergency first aid instructions for common situations",
     "emergencyContacts": "Emergency Contacts",
-    "emergencyContactsDesc": "Quick dial for ambulance, police, and fire services",
-    "symptomChecker": "Symptom Checker",
-    "symptomCheckerDesc": "AI-powered symptom analysis and recommendations"
+    "emergencyContactsDesc": "Quick access to ambulance, police, fire, and other emergency numbers",
+    "symptomChecker": "AI Symptom Checker",
+    "symptomCheckerDesc": "AI-powered symptom analysis with risk assessment and recommended actions",
+    "bloodBankFinder": "Blood Bank Finder",
+    "bloodBankFinderDesc": "Locate nearby blood banks with real-time blood group availability",
+    "doctorConnect": "Doctor Video Connect",
+    "doctorConnectDesc": "24/7 video consultations with verified medical professionals"
   },
   "hospitals": {
     "title": "Nearby Hospitals",
-    "subtitle": "Find emergency care facilities in your area",
+    "subtitle": "Real-time availability of hospitals near you",
     "searchPlaceholder": "Search hospitals by name or specialty...",
     "filters": "Filters",
     "available": "Available",
     "busy": "Busy",
     "full": "Full",
-    "waitTime": "Wait time",
+    "waitTime": "Wait Time",
     "icuBeds": "ICU Beds",
     "generalBeds": "General Beds",
     "min": "min"
   },
   "firstAid": {
-    "title": "First Aid Guides",
-    "subtitle": "Essential first aid procedures for common emergencies",
+    "title": "First Aid Basics",
+    "subtitle": "Quick reference guides for emergency situations",
+    "viewAllGuides": "View All Guides",
+    "cpr": "CPR",
+    "cprDesc": "Cardiopulmonary resuscitation steps",
+    "burns": "Burns",
+    "burnsDesc": "Treating minor to severe burns",
+    "choking": "Choking",
+    "chokingDesc": "Heimlich maneuver instructions",
+    "fractures": "Fractures",
+    "fracturesDesc": "Immobilizing broken bones",
     "warning": "These guides are for informational purposes. Always call emergency services for serious injuries.",
     "step": "Step"
   },
   "contacts": {
     "title": "Emergency Contacts",
-    "subtitle": "Important emergency numbers to keep handy",
+    "subtitle": "One tap to call emergency services",
+    "ambulance": "Ambulance",
+    "police": "Police",
+    "fire": "Fire",
+    "childHelpline": "Child Helpline",
+    "womenHelpline": "Women Helpline",
+    "disaster": "Disaster",
     "primaryEmergency": "Primary Emergency Numbers",
     "additionalHelplines": "Additional Helplines",
     "whenToCall": "When to Call Emergency Services",
@@ -108,11 +136,14 @@
     "signUp": "Sign up"
   },
   "footer": {
-    "description": "Your trusted platform for emergency healthcare services and medical assistance.",
+    "description": "Your trusted healthcare companion. Quick access to hospitals, medicines, first aid, and emergency services.",
     "quickLinks": "Quick Links",
-    "emergencyServices": "Emergency Services",
-    "contact": "Contact",
-    "allRightsReserved": "All rights reserved."
+    "emergencyNumbers": "Emergency Numbers",
+    "contactUs": "Contact Us",
+    "available247": "Available 24/7 Nationwide",
+    "allRightsReserved": "All rights reserved.",
+    "madeWith": "Made with",
+    "forSavingLives": "for saving lives"
   },
   "sos": {
     "button": "SOS",

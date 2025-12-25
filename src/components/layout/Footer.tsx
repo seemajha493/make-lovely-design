@@ -1,7 +1,17 @@
 import { Heart, Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export function Footer() {
+  const { t } = useTranslation();
+
+  const quickLinks = [
+    { nameKey: "common.hospitals", path: "/hospitals" },
+    { nameKey: "common.firstAid", path: "/first-aid" },
+    { nameKey: "contacts.title", path: "/contacts" },
+    { nameKey: "common.about", path: "/about" },
+  ];
+
   return (
     <footer className="border-t border-border bg-card mt-auto">
       <div className="container py-12">
@@ -16,20 +26,20 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Your trusted healthcare companion. Quick access to hospitals, medicines, first aid, and emergency services.
+              {t('footer.description')}
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
-              {["Hospitals", "First Aid", "Emergency Contacts", "About"].map((item) => (
-                <li key={item}>
+              {quickLinks.map((item) => (
+                <li key={item.path}>
                   <Link
-                    to={`/${item.toLowerCase().replace(" ", "-")}`}
+                    to={item.path}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {item}
+                    {t(item.nameKey)}
                   </Link>
                 </li>
               ))}
@@ -37,25 +47,25 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Emergency Numbers</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t('footer.emergencyNumbers')}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-destructive" />
-                Ambulance: 108
+                {t('contacts.ambulance')}: 108
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary" />
-                Police: 100
+                {t('contacts.police')}: 100
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-warning" />
-                Fire: 101
+                {t('contacts.fire')}: 101
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Contact Us</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t('footer.contactUs')}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
@@ -63,7 +73,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                Available 24/7 Nationwide
+                {t('footer.available247')}
               </li>
             </ul>
           </div>
@@ -71,10 +81,10 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 MediBridge. All rights reserved.
+            © 2024 MediBridge. {t('footer.allRightsReserved')}
           </p>
           <p className="text-sm text-muted-foreground">
-            Made with <Heart className="inline h-4 w-4 text-destructive" /> for saving lives
+            {t('footer.madeWith')} <Heart className="inline h-4 w-4 text-destructive" /> {t('footer.forSavingLives')}
           </p>
         </div>
       </div>
