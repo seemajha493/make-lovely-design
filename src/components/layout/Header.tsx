@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
 import { supabase } from "@/integrations/supabase/client";
+import { useTranslation } from "react-i18next";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,19 +15,20 @@ import {
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const mainNavLinks = [
-  { name: "Hospitals", path: "/hospitals", icon: Hospital },
-  { name: "Medicines", path: "/medicines", icon: Pill },
-  { name: "First Aid", path: "/first-aid", icon: Cross },
+  { nameKey: "common.hospitals", path: "/hospitals", icon: Hospital },
+  { nameKey: "common.medicines", path: "/medicines", icon: Pill },
+  { nameKey: "common.firstAid", path: "/first-aid", icon: Cross },
 ];
 
 const moreLinks = [
-  { name: "Pharmacies", path: "/pharmacies", icon: Pill },
-  { name: "Emergency Contacts", path: "/contacts", icon: Phone },
-  { name: "Prescription", path: "/prescription", icon: BookOpen },
-  { name: "Doctors", path: "/doctors", icon: Stethoscope },
-  { name: "Blood Banks", path: "/blood-banks", icon: Cross },
+  { nameKey: "common.pharmacies", path: "/pharmacies", icon: Pill },
+  { nameKey: "contacts.title", path: "/contacts", icon: Phone },
+  { nameKey: "common.prescription", path: "/prescription", icon: BookOpen },
+  { nameKey: "common.doctors", path: "/doctors", icon: Stethoscope },
+  { nameKey: "common.bloodBanks", path: "/blood-banks", icon: Cross },
 ];
 
 export function Header() {
@@ -36,6 +38,7 @@ export function Header() {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
   const { totalItems } = useCart();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const checkAdminRole = async () => {
@@ -79,7 +82,7 @@ export function Header() {
                 : "text-muted-foreground hover:text-foreground hover:bg-accent"
             }`}
           >
-            Home
+            {t('common.home')}
           </Link>
           {mainNavLinks.map((link) => (
             <Link
@@ -91,7 +94,7 @@ export function Header() {
                   : "text-muted-foreground hover:text-foreground hover:bg-accent"
               }`}
             >
-              {link.name}
+              {t(link.nameKey)}
             </Link>
           ))}
           
@@ -105,7 +108,7 @@ export function Header() {
                     : "text-muted-foreground hover:text-foreground hover:bg-accent"
                 }`}
               >
-                More
+                {t('common.more')}
                 <ChevronDown className="h-3 w-3" />
               </button>
             </DropdownMenuTrigger>
@@ -117,7 +120,7 @@ export function Header() {
                   className={location.pathname === link.path ? "bg-primary/10 text-primary" : ""}
                 >
                   <link.icon className="h-4 w-4 mr-2" />
-                  {link.name}
+                  {t(link.nameKey)}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
@@ -126,6 +129,9 @@ export function Header() {
 
         {/* Right Section */}
         <div className="hidden lg:flex items-center gap-1">
+          {/* Language Switcher */}
+          <LanguageSwitcher />
+          
           {/* Cart */}
           <Button 
             variant="ghost" 
@@ -235,8 +241,9 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Mobile: Cart + Menu */}
+        {/* Mobile: Language + Cart + Menu */}
         <div className="flex lg:hidden items-center gap-1">
+          <LanguageSwitcher />
           <Button 
             variant="ghost" 
             size="icon"
@@ -272,7 +279,7 @@ export function Header() {
                   : "text-muted-foreground hover:text-foreground hover:bg-accent"
               }`}
             >
-              Home
+              {t('common.home')}
             </Link>
             {mainNavLinks.map((link) => (
               <Link
@@ -286,12 +293,12 @@ export function Header() {
                 }`}
               >
                 <link.icon className="h-4 w-4" />
-                {link.name}
+                {t(link.nameKey)}
               </Link>
             ))}
             
             <div className="border-t border-border my-2 pt-2">
-              <p className="px-3 py-1 text-xs font-medium text-muted-foreground">More Services</p>
+              <p className="px-3 py-1 text-xs font-medium text-muted-foreground">{t('common.more')}</p>
               {moreLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -304,20 +311,20 @@ export function Header() {
                   }`}
                 >
                   <link.icon className="h-4 w-4" />
-                  {link.name}
+                  {t(link.nameKey)}
                 </Link>
               ))}
             </div>
 
             <div className="border-t border-border my-2 pt-2">
-              <p className="px-3 py-1 text-xs font-medium text-muted-foreground">For Professionals</p>
+              <p className="px-3 py-1 text-xs font-medium text-muted-foreground">{t('header.forProfessionals')}</p>
               <Link
                 to="/doctor-auth"
                 onClick={() => setIsMenuOpen(false)}
                 className="px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
               >
                 <Stethoscope className="h-4 w-4" />
-                Doctor Portal
+                {t('header.doctorPortal')}
               </Link>
               <Link
                 to="/pharmacist-auth"
@@ -325,20 +332,20 @@ export function Header() {
                 className="px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
               >
                 <Pill className="h-4 w-4" />
-                Pharmacist Portal
+                {t('header.pharmacistPortal')}
               </Link>
             </div>
 
             {isAdmin && (
               <div className="border-t border-border my-2 pt-2">
-                <p className="px-3 py-1 text-xs font-medium text-muted-foreground">Admin</p>
+                <p className="px-3 py-1 text-xs font-medium text-muted-foreground">{t('header.adminPanel')}</p>
                 <Link
                   to="/admin"
                   onClick={() => setIsMenuOpen(false)}
                   className="px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
                 >
                   <LayoutDashboard className="h-4 w-4" />
-                  Dashboard
+                  {t('header.dashboard')}
                 </Link>
                 <Link
                   to="/admin/orders"
@@ -346,7 +353,7 @@ export function Header() {
                   className="px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
                 >
                   <Package className="h-4 w-4" />
-                  Manage Orders
+                  {t('header.manageOrders')}
                 </Link>
               </div>
             )}
@@ -360,7 +367,7 @@ export function Header() {
                     className="px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
                   >
                     <User className="h-4 w-4" />
-                    My Profile
+                    {t('common.profile')}
                   </Link>
                   <Link
                     to="/orders"
@@ -368,22 +375,22 @@ export function Header() {
                     className="px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
                   >
                     <Package className="h-4 w-4" />
-                    My Orders
+                    {t('common.orders')}
                   </Link>
                   <Button variant="outline" onClick={handleSignOut} className="w-full gap-2">
                     <LogOut className="h-4 w-4" />
-                    Sign Out
+                    {t('common.signOut')}
                   </Button>
                 </>
               ) : (
                 <Button variant="default" onClick={() => { navigate("/auth"); setIsMenuOpen(false); }} className="w-full gap-2">
                   <User className="h-4 w-4" />
-                  Sign In
+                  {t('common.signIn')}
                 </Button>
               )}
               <Button variant="destructive" className="w-full gap-2">
                 <Phone className="h-4 w-4" />
-                Emergency: 108
+                {t('header.emergencyHelp')}: 108
               </Button>
             </div>
           </nav>
