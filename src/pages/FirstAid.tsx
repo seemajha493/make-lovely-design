@@ -1,7 +1,8 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SOSButton } from "@/components/SOSButton";
-import { Heart, Flame, Wind, Bone, Droplet, AlertTriangle, ChevronRight, ChevronDown } from "lucide-react";
+import { FirstAidChat } from "@/components/FirstAidChat";
+import { Heart, Flame, Wind, Bone, Droplet, AlertTriangle, ChevronRight, ChevronDown, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -85,6 +86,22 @@ const FirstAid = () => {
               </p>
             </div>
           </div>
+
+          {/* AI Chat Section */}
+          <div className="mb-8">
+            <div className="flex items-center gap-2 mb-4">
+              <Sparkles className="h-5 w-5 text-primary" />
+              <h2 className="text-xl font-semibold text-foreground">
+                {t('firstAidPage.aiAssistant', 'AI First Aid Assistant')}
+              </h2>
+            </div>
+            <FirstAidChat />
+          </div>
+
+          {/* Section Title for Guides */}
+          <h2 className="text-xl font-semibold text-foreground mb-4">
+            {t('firstAidPage.quickGuides', 'Quick Reference Guides')}
+          </h2>
 
           {/* Guides List */}
           <div className="space-y-4">
