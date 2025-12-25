@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill, Briefcase } from "lucide-react";
+import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill, Briefcase, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,9 +23,22 @@ const navLinks = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
+
+  useEffect(() => {
+    const checkAdminRole = async () => {
+      if (!user) {
+        setIsAdmin(false);
+        return;
+      }
+      const { data } = await supabase.rpc('has_role', { _user_id: user.id, _role: 'admin' });
+      setIsAdmin(!!data);
+    };
+    checkAdminRole();
+  }, [user]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -77,6 +91,19 @@ export function Header() {
                 <Pill className="h-4 w-4 mr-2" />
                 For Pharmacists
               </DropdownMenuItem>
+              {isAdmin && (
+                <>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => navigate("/admin/doctors")}>
+                    <Shield className="h-4 w-4 mr-2" />
+                    Verify Doctors
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate("/admin/pharmacists")}>
+                    <Shield className="h-4 w-4 mr-2" />
+                    Verify Pharmacists
+                  </DropdownMenuItem>
+                </>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
           {user ? (
