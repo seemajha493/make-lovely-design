@@ -41,6 +41,7 @@ interface Order {
   items: OrderItem[];
   profile?: {
     full_name: string | null;
+    email?: string;
   };
 }
 
@@ -153,6 +154,36 @@ export default function AdminOrders() {
         .eq('id', orderId);
 
       if (error) throw error;
+
+      // Find the order to get customer details for email
+      const order = orders.find(o => o.id === orderId);
+      
+      // Send email notification
+      if (order) {
+        // Get user email from auth
+        const { data: userData } = await supabase.auth.admin.getUserById(order.user_id).catch(() => ({ data: null }));
+        
+        // Try to get email from profiles or use a fallback approach
+        const customerEmail = order.profile?.email;
+        
+        if (customerEmail) {
+          try {
+            await supabase.functions.invoke('send-order-notification', {
+              body: {
+                orderId: order.id,
+                newStatus,
+                customerEmail,
+                customerName: order.profile?.full_name || 'Customer',
+                orderTotal: order.total_amount
+              }
+            });
+            console.log('Email notification sent successfully');
+          } catch (emailError) {
+            console.error('Failed to send email notification:', emailError);
+            // Don't fail the status update if email fails
+          }
+        }
+      }
 
       setOrders(prev => prev.map(order => 
         order.id === orderId ? { ...order, status: newStatus } : order
