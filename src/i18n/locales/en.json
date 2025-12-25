@@ -41,7 +41,9 @@
     "callNow": "Call Now",
     "callHospital": "Call Hospital",
     "critical": "Critical",
-    "important": "Important"
+    "important": "Important",
+    "quickAccess": "Quick Access",
+    "nearYou": "Near You"
   },
   "header": {
     "emergencyHelp": "Emergency",

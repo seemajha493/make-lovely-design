@@ -41,7 +41,9 @@
     "callNow": "अभी कॉल करें",
     "callHospital": "अस्पताल को कॉल करें",
     "critical": "गंभीर",
-    "important": "महत्वपूर्ण"
+    "important": "महत्वपूर्ण",
+    "quickAccess": "त्वरित पहुंच",
+    "nearYou": "आपके पास"
   },
   "header": {
     "emergencyHelp": "आपातकाल",
