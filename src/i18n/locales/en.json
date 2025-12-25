@@ -35,7 +35,13 @@
     "limited": "Limited",
     "beds": "Beds",
     "icu": "ICU",
-    "about": "About"
+    "about": "About",
+    "wait": "Wait",
+    "ventilators": "Ventilators",
+    "callNow": "Call Now",
+    "callHospital": "Call Hospital",
+    "critical": "Critical",
+    "important": "Important"
   },
   "header": {
     "emergencyHelp": "Emergency",
@@ -74,6 +80,15 @@
     "doctorConnect": "Doctor Video Connect",
     "doctorConnectDesc": "24/7 video consultations with verified medical professionals"
   },
+  "hospitalsPage": {
+    "title": "Find Hospitals",
+    "subtitle": "Real-time bed availability and wait times near you",
+    "searchPlaceholder": "Search hospitals or specialties...",
+    "filters": "Filters",
+    "available": "Available",
+    "limited": "Limited",
+    "full": "Full"
+  },
   "hospitals": {
     "title": "Nearby Hospitals",
     "subtitle": "Real-time availability of hospitals near you",
@@ -86,6 +101,74 @@
     "icuBeds": "ICU Beds",
     "generalBeds": "General Beds",
     "min": "min"
+  },
+  "firstAidPage": {
+    "title": "First Aid Guides",
+    "subtitle": "Step-by-step emergency first aid instructions",
+    "importantNotice": "Important Notice",
+    "warningText": "These guides are for educational purposes. Always call emergency services (108) for serious injuries. Professional medical help should be sought as soon as possible.",
+    "cprTitle": "CPR (Cardiopulmonary Resuscitation)",
+    "cprSteps": [
+      "Check for responsiveness - tap the person and shout 'Are you okay?'",
+      "Call emergency services (108) or ask someone nearby to call",
+      "Place the person on their back on a firm, flat surface",
+      "Kneel beside the person's chest",
+      "Place the heel of one hand on the center of the chest, other hand on top",
+      "Push hard and fast - at least 2 inches deep, 100-120 compressions per minute",
+      "If trained, give 2 rescue breaths after every 30 compressions",
+      "Continue until emergency help arrives or the person starts breathing"
+    ],
+    "burnsTitle": "Burns Treatment",
+    "burnsSteps": [
+      "Remove the person from the source of the burn if safe to do so",
+      "Cool the burn under cool (not cold) running water for at least 10 minutes",
+      "Do NOT use ice, butter, or toothpaste on burns",
+      "Remove any jewelry or tight clothing near the burned area before swelling",
+      "Cover the burn loosely with a sterile, non-stick bandage",
+      "Take over-the-counter pain relievers if needed",
+      "Seek medical help for large burns, burns on face/hands, or deep burns"
+    ],
+    "chokingTitle": "Choking (Heimlich Maneuver)",
+    "chokingSteps": [
+      "Ask 'Are you choking?' - if they can't speak, cough, or breathe, act immediately",
+      "Stand behind the person and wrap your arms around their waist",
+      "Make a fist with one hand and place it just above the navel",
+      "Grasp the fist with your other hand",
+      "Give 5 quick, upward abdominal thrusts",
+      "Repeat until the object is expelled or the person becomes unconscious",
+      "If unconscious, begin CPR and call emergency services"
+    ],
+    "fracturesTitle": "Fractures & Bone Injuries",
+    "fracturesSteps": [
+      "Keep the injured person still and calm - do not try to move them",
+      "Call emergency services for serious fractures",
+      "Do NOT try to straighten or realign the bone",
+      "Immobilize the area above and below the suspected fracture",
+      "Apply ice wrapped in cloth to reduce swelling (20 minutes on, 20 off)",
+      "Check for circulation beyond the injury (pulse, skin color)",
+      "Treat for shock if needed - keep person warm and lying down"
+    ],
+    "bleedingTitle": "Severe Bleeding",
+    "bleedingSteps": [
+      "Call emergency services immediately for severe bleeding",
+      "Apply direct pressure to the wound using a clean cloth or bandage",
+      "If possible, elevate the injured area above the heart",
+      "Maintain pressure for at least 15 minutes without removing the cloth",
+      "If blood soaks through, add more cloth on top - don't remove the first layer",
+      "Apply a pressure bandage to hold the cloth in place",
+      "Monitor for signs of shock - pale skin, rapid breathing, confusion"
+    ],
+    "shockTitle": "Shock Treatment",
+    "shockSteps": [
+      "Call emergency services immediately",
+      "Have the person lie down on their back",
+      "Elevate the legs about 12 inches if no suspected spinal injury",
+      "Keep the person warm with blankets or coats",
+      "Do not give food or water",
+      "Monitor breathing and pulse regularly",
+      "Be prepared to perform CPR if needed",
+      "Keep the person calm and still until help arrives"
+    ]
   },
   "firstAid": {
     "title": "First Aid Basics",
@@ -101,6 +184,35 @@
     "fracturesDesc": "Immobilizing broken bones",
     "warning": "These guides are for informational purposes. Always call emergency services for serious injuries.",
     "step": "Step"
+  },
+  "contactsPage": {
+    "title": "Emergency Contacts",
+    "subtitle": "Quick access to all emergency services - tap to call",
+    "primaryEmergency": "Primary Emergency Numbers",
+    "additionalHelplines": "Additional Helplines",
+    "whenToCall": "When to Call Emergency Services",
+    "lifeThreatening": "Life-threatening situations or serious injuries",
+    "chestPain": "Chest pain, difficulty breathing, or signs of stroke",
+    "unconscious": "Unconsciousness or unresponsiveness",
+    "severeBleedingBurns": "Severe bleeding or burns",
+    "poisoning": "Suspected poisoning or overdose",
+    "feelInDanger": "Any situation where you feel in danger",
+    "nationalEmergency": "National Emergency",
+    "nationalEmergencyDesc": "Single emergency number for all services",
+    "ambulanceDesc": "Medical emergencies and ambulance services",
+    "policeDesc": "Crime, violence, and law enforcement",
+    "fireBrigade": "Fire Brigade",
+    "fireBrigadeDesc": "Fire emergencies and rescue operations",
+    "womenHelplineDesc": "Women in distress or facing domestic violence",
+    "childHelplineDesc": "Children in need of care and protection",
+    "roadAccident": "Road Accident",
+    "roadAccidentDesc": "Road accident and highway emergencies",
+    "disasterManagement": "Disaster Management",
+    "disasterManagementDesc": "Natural disasters and calamities",
+    "antiPoison": "Anti-Poison",
+    "antiPoisonDesc": "Poisoning emergencies and guidance",
+    "seniorCitizen": "Senior Citizen",
+    "seniorCitizenDesc": "Elderly citizens in need of assistance"
   },
   "contacts": {
     "title": "Emergency Contacts",

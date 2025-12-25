@@ -4,6 +4,7 @@ import { SOSButton } from "@/components/SOSButton";
 import { Search, MapPin, Clock, Bed, Activity, Filter, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const hospitals = [
   {
@@ -72,11 +73,25 @@ const statusColors = {
 
 const Hospitals = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useTranslation();
 
   const filteredHospitals = hospitals.filter(hospital =>
     hospital.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     hospital.specialties.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()))
   );
+
+  const getStatusLabel = (status: string) => {
+    switch (status) {
+      case "available":
+        return t('hospitalsPage.available');
+      case "limited":
+        return t('hospitalsPage.limited');
+      case "full":
+        return t('hospitalsPage.full');
+      default:
+        return status;
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -86,10 +101,10 @@ const Hospitals = () => {
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-              Find Hospitals
+              {t('hospitalsPage.title')}
             </h1>
             <p className="text-muted-foreground">
-              Real-time bed availability and wait times near you
+              {t('hospitalsPage.subtitle')}
             </p>
           </div>
 
@@ -99,7 +114,7 @@ const Hospitals = () => {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <input
                 type="text"
-                placeholder="Search hospitals or specialties..."
+                placeholder={t('hospitalsPage.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-12 pl-12 pr-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
@@ -107,7 +122,7 @@ const Hospitals = () => {
             </div>
             <Button variant="outline" className="h-12 gap-2">
               <Filter className="h-5 w-5" />
-              Filters
+              {t('hospitalsPage.filters')}
             </Button>
           </div>
 
@@ -131,7 +146,7 @@ const Hospitals = () => {
                         </div>
                       </div>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium border ${statusColors[hospital.status as keyof typeof statusColors]}`}>
-                        {hospital.status === "available" ? "Available" : hospital.status === "limited" ? "Limited" : "Full"}
+                        {getStatusLabel(hospital.status)}
                       </span>
                     </div>
 
@@ -151,22 +166,22 @@ const Hospitals = () => {
                     <div className="text-center p-4 rounded-xl bg-muted/50 min-w-[80px]">
                       <Clock className="h-5 w-5 mx-auto mb-1 text-primary" />
                       <div className="text-lg font-semibold text-foreground">{hospital.waitTime}</div>
-                      <div className="text-xs text-muted-foreground">Wait</div>
+                      <div className="text-xs text-muted-foreground">{t('common.wait')}</div>
                     </div>
                     <div className="text-center p-4 rounded-xl bg-muted/50 min-w-[80px]">
                       <Bed className="h-5 w-5 mx-auto mb-1 text-teal" />
                       <div className="text-lg font-semibold text-foreground">{hospital.beds}</div>
-                      <div className="text-xs text-muted-foreground">Beds</div>
+                      <div className="text-xs text-muted-foreground">{t('common.beds')}</div>
                     </div>
                     <div className="text-center p-4 rounded-xl bg-muted/50 min-w-[80px]">
                       <Activity className="h-5 w-5 mx-auto mb-1 text-destructive" />
                       <div className="text-lg font-semibold text-foreground">{hospital.icuBeds}</div>
-                      <div className="text-xs text-muted-foreground">ICU</div>
+                      <div className="text-xs text-muted-foreground">{t('common.icu')}</div>
                     </div>
                     <div className="text-center p-4 rounded-xl bg-muted/50 min-w-[80px]">
                       <Activity className="h-5 w-5 mx-auto mb-1 text-warning" />
                       <div className="text-lg font-semibold text-foreground">{hospital.ventilators}</div>
-                      <div className="text-xs text-muted-foreground">Ventilators</div>
+                      <div className="text-xs text-muted-foreground">{t('common.ventilators')}</div>
                     </div>
                   </div>
                 </div>
@@ -174,16 +189,16 @@ const Hospitals = () => {
                 <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-border">
                   <Button variant="default" className="gap-2">
                     <MapPin className="h-4 w-4" />
-                    Get Directions
+                    {t('common.getDirections')}
                   </Button>
                   <Button variant="outline" className="gap-2" asChild>
                     <a href={`tel:${hospital.phone}`}>
                       <Phone className="h-4 w-4" />
-                      Call Hospital
+                      {t('common.callHospital')}
                     </a>
                   </Button>
                   <Button variant="teal" className="gap-2">
-                    Book Appointment
+                    {t('common.bookAppointment')}
                   </Button>
                 </div>
               </div>
