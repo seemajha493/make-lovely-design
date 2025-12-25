@@ -19,12 +19,12 @@ export function HeroSection() {
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Find Emergency Help
-            <span className="block text-primary">When Every Second Counts</span>
+            Your Healthcare
+            <span className="block text-primary">Bridge to Better Health</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Instantly locate nearby hospitals, access first aid guides, and connect with emergency services. Your trusted companion in medical emergencies.
+            Instantly locate nearby hospitals, order medicines, access first aid guides, and connect with healthcare services. Your trusted healthcare companion.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">

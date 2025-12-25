@@ -56,7 +56,7 @@ export function Header() {
             <Heart className="h-5 w-5 text-primary-foreground" />
           </div>
           <span className="text-lg font-bold text-foreground">
-            Emergency<span className="text-primary">Help</span>
+            Medi<span className="text-primary">Bridge</span>
           </span>
         </Link>
 

@@ -12,11 +12,11 @@ export function Footer() {
                 <Heart className="h-5 w-5 text-primary-foreground" />
               </div>
               <span className="text-lg font-bold text-foreground">
-                Emergency<span className="text-primary">Help</span>
+                Medi<span className="text-primary">Bridge</span>
               </span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Your trusted companion in medical emergencies. Quick access to hospitals, first aid, and emergency services.
+              Your trusted healthcare companion. Quick access to hospitals, medicines, first aid, and emergency services.
             </p>
           </div>
 
@@ -59,7 +59,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                help@emergencyhelp.com
+                support@medibridge.com
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
@@ -71,7 +71,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 EmergencyHelp. All rights reserved.
+            © 2024 MediBridge. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
             Made with <Heart className="inline h-4 w-4 text-destructive" /> for saving lives
