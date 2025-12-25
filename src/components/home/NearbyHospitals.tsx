@@ -1,6 +1,7 @@
 import { MapPin, Clock, Bed, Activity, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const hospitals = [
   {
@@ -39,21 +40,36 @@ const statusColors = {
 };
 
 export function NearbyHospitals() {
+  const { t } = useTranslation();
+
+  const getStatusLabel = (status: string) => {
+    switch (status) {
+      case "available":
+        return t('hospitals.available');
+      case "limited":
+        return t('common.limited');
+      case "full":
+        return t('hospitals.full');
+      default:
+        return status;
+    }
+  };
+
   return (
     <section className="py-16 bg-muted/50">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-              Nearby Hospitals
+              {t('hospitals.title')}
             </h2>
             <p className="text-muted-foreground">
-              Real-time availability of hospitals near you
+              {t('hospitals.subtitle')}
             </p>
           </div>
           <Button variant="outline" asChild>
             <Link to="/hospitals" className="gap-2">
-              View All <ChevronRight className="h-4 w-4" />
+              {t('common.viewAll')} <ChevronRight className="h-4 w-4" />
             </Link>
           </Button>
         </div>
@@ -75,7 +91,7 @@ export function NearbyHospitals() {
                   </div>
                 </div>
                 <span className={`px-3 py-1 rounded-full text-xs font-medium border ${statusColors[hospital.status as keyof typeof statusColors]}`}>
-                  {hospital.status === "available" ? "Available" : hospital.status === "limited" ? "Limited" : "Full"}
+                  {getStatusLabel(hospital.status)}
                 </span>
               </div>
 
@@ -83,26 +99,26 @@ export function NearbyHospitals() {
                 <div className="text-center p-3 rounded-xl bg-muted/50">
                   <Clock className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
                   <div className="text-sm font-semibold text-foreground">{hospital.waitTime}</div>
-                  <div className="text-xs text-muted-foreground">Wait Time</div>
+                  <div className="text-xs text-muted-foreground">{t('hospitals.waitTime')}</div>
                 </div>
                 <div className="text-center p-3 rounded-xl bg-muted/50">
                   <Bed className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
                   <div className="text-sm font-semibold text-foreground">{hospital.beds}</div>
-                  <div className="text-xs text-muted-foreground">Beds</div>
+                  <div className="text-xs text-muted-foreground">{t('common.beds')}</div>
                 </div>
                 <div className="text-center p-3 rounded-xl bg-muted/50">
                   <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
                   <div className="text-sm font-semibold text-foreground">{hospital.icuBeds}</div>
-                  <div className="text-xs text-muted-foreground">ICU</div>
+                  <div className="text-xs text-muted-foreground">{t('common.icu')}</div>
                 </div>
               </div>
 
               <div className="flex gap-3">
                 <Button variant="default" className="flex-1" size="sm">
-                  Get Directions
+                  {t('common.getDirections')}
                 </Button>
                 <Button variant="outline" size="sm">
-                  Call
+                  {t('common.call')}
                 </Button>
               </div>
             </div>
