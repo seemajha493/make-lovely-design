@@ -25,8 +25,8 @@ const services = [
   },
   {
     icon: Stethoscope,
-    title: "Symptom Checker",
-    description: "AI-powered symptom analysis with recommended next steps",
+    title: "AI Symptom Checker",
+    description: "AI-powered symptom analysis with risk assessment and recommended actions",
     href: "/symptoms",
     color: "bg-warning/10 text-warning",
   },
