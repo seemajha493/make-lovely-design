@@ -169,26 +169,88 @@ export function Header() {
                 {link.name}
               </Link>
             ))}
-            {user ? (
-              <>
+            
+            {/* Medical Professionals Section */}
+            <div className="border-t border-border pt-2 mt-2">
+              <p className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                Medical Professionals
+              </p>
+              <Link
+                to="/doctor-auth"
+                onClick={() => setIsMenuOpen(false)}
+                className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
+              >
+                <Stethoscope className="h-4 w-4" />
+                For Doctors
+              </Link>
+              <Link
+                to="/pharmacist-auth"
+                onClick={() => setIsMenuOpen(false)}
+                className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
+              >
+                <Pill className="h-4 w-4" />
+                For Pharmacists
+              </Link>
+            </div>
+
+            {/* Admin Section */}
+            {isAdmin && (
+              <div className="border-t border-border pt-2 mt-2">
+                <p className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  Admin Panel
+                </p>
                 <Link
-                  to="/profile"
+                  to="/admin"
                   onClick={() => setIsMenuOpen(false)}
-                  className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+                  className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
                 >
-                  My Profile
+                  <LayoutDashboard className="h-4 w-4" />
+                  Admin Dashboard
                 </Link>
-                <Button variant="outline" onClick={handleSignOut} className="mt-2 gap-2">
-                  <LogOut className="h-4 w-4" />
-                  Sign Out
-                </Button>
-              </>
-            ) : (
-              <Button variant="outline" onClick={() => { navigate("/auth"); setIsMenuOpen(false); }} className="mt-2 gap-2">
-                <User className="h-4 w-4" />
-                Sign In
-              </Button>
+                <Link
+                  to="/admin/doctors"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
+                >
+                  <Shield className="h-4 w-4" />
+                  Verify Doctors
+                </Link>
+                <Link
+                  to="/admin/pharmacists"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
+                >
+                  <Shield className="h-4 w-4" />
+                  Verify Pharmacists
+                </Link>
+              </div>
             )}
+
+            {/* User Section */}
+            <div className="border-t border-border pt-2 mt-2">
+              {user ? (
+                <>
+                  <Link
+                    to="/profile"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-2"
+                  >
+                    <User className="h-4 w-4" />
+                    My Profile
+                  </Link>
+                  <Button variant="outline" onClick={handleSignOut} className="w-full mt-2 gap-2">
+                    <LogOut className="h-4 w-4" />
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <Button variant="outline" onClick={() => { navigate("/auth"); setIsMenuOpen(false); }} className="w-full mt-2 gap-2">
+                  <User className="h-4 w-4" />
+                  Sign In
+                </Button>
+              )}
+            </div>
+
             <Button variant="emergency" className="mt-2 gap-2">
               <Phone className="h-4 w-4" />
               Call 108
