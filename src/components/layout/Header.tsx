@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Phone, Heart, User, LogOut } from "lucide-react";
+import { Menu, X, Phone, Heart, User, LogOut, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -16,6 +16,7 @@ const navLinks = [
   { name: "Hospitals", path: "/hospitals" },
   { name: "First Aid", path: "/first-aid" },
   { name: "Prescription", path: "/prescription" },
+  { name: "Doctors", path: "/doctors" },
   { name: "Emergency Contacts", path: "/contacts" },
 ];
 
@@ -60,6 +61,10 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
+          <Button variant="outline" size="sm" onClick={() => navigate("/doctor-auth")} className="gap-2">
+            <Stethoscope className="h-4 w-4" />
+            For Doctors
+          </Button>
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
