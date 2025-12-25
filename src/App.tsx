@@ -17,6 +17,10 @@ import Prescription from "./pages/Prescription";
 import DoctorAuth from "./pages/DoctorAuth";
 import DoctorDashboard from "./pages/DoctorDashboard";
 import AdminDoctors from "./pages/AdminDoctors";
+import Pharmacies from "./pages/Pharmacies";
+import PharmacistAuth from "./pages/PharmacistAuth";
+import PharmacistDashboard from "./pages/PharmacistDashboard";
+import AdminPharmacists from "./pages/AdminPharmacists";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +46,10 @@ const App = () => (
             <Route path="/doctor-auth" element={<DoctorAuth />} />
             <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
             <Route path="/admin/doctors" element={<AdminDoctors />} />
+            <Route path="/pharmacies" element={<Pharmacies />} />
+            <Route path="/pharmacist-auth" element={<PharmacistAuth />} />
+            <Route path="/pharmacist-dashboard" element={<PharmacistDashboard />} />
+            <Route path="/admin/pharmacists" element={<AdminPharmacists />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

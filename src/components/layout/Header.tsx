@@ -14,9 +14,9 @@ import {
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Hospitals", path: "/hospitals" },
+  { name: "Pharmacies", path: "/pharmacies" },
   { name: "First Aid", path: "/first-aid" },
   { name: "Prescription", path: "/prescription" },
-  { name: "Doctors", path: "/doctors" },
   { name: "Emergency Contacts", path: "/contacts" },
 ];
 

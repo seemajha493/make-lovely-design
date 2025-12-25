@@ -161,6 +161,60 @@ export type Database = {
         }
         Relationships: []
       }
+      pharmacists: {
+        Row: {
+          created_at: string
+          email: string
+          experience_years: number | null
+          full_name: string
+          id: string
+          license_number: string
+          pharmacy_address: string | null
+          pharmacy_name: string
+          phone: string | null
+          qualification: string
+          rejection_reason: string | null
+          status: Database["public"]["Enums"]["pharmacist_status"]
+          updated_at: string
+          user_id: string
+          verified_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          experience_years?: number | null
+          full_name: string
+          id?: string
+          license_number: string
+          pharmacy_address?: string | null
+          pharmacy_name: string
+          phone?: string | null
+          qualification: string
+          rejection_reason?: string | null
+          status?: Database["public"]["Enums"]["pharmacist_status"]
+          updated_at?: string
+          user_id: string
+          verified_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          experience_years?: number | null
+          full_name?: string
+          id?: string
+          license_number?: string
+          pharmacy_address?: string | null
+          pharmacy_name?: string
+          phone?: string | null
+          qualification?: string
+          rejection_reason?: string | null
+          status?: Database["public"]["Enums"]["pharmacist_status"]
+          updated_at?: string
+          user_id?: string
+          verified_at?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           allergies: string[] | null
@@ -238,6 +292,7 @@ export type Database = {
     Enums: {
       app_role: "admin" | "moderator" | "user"
       doctor_status: "pending" | "verified" | "rejected"
+      pharmacist_status: "pending" | "verified" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -367,6 +422,7 @@ export const Constants = {
     Enums: {
       app_role: ["admin", "moderator", "user"],
       doctor_status: ["pending", "verified", "rejected"],
+      pharmacist_status: ["pending", "verified", "rejected"],
     },
   },
 } as const
