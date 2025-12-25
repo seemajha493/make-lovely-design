@@ -14,7 +14,135 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blood_donation_records: {
+        Row: {
+          blood_bank_name: string
+          created_at: string
+          donation_date: string
+          id: string
+          notes: string | null
+          units_donated: number | null
+          user_id: string
+        }
+        Insert: {
+          blood_bank_name: string
+          created_at?: string
+          donation_date: string
+          id?: string
+          notes?: string | null
+          units_donated?: number | null
+          user_id: string
+        }
+        Update: {
+          blood_bank_name?: string
+          created_at?: string
+          donation_date?: string
+          id?: string
+          notes?: string | null
+          units_donated?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      emergency_contacts: {
+        Row: {
+          created_at: string
+          id: string
+          is_primary: boolean | null
+          name: string
+          phone: string
+          relationship: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_primary?: boolean | null
+          name: string
+          phone: string
+          relationship: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_primary?: boolean | null
+          name?: string
+          phone?: string
+          relationship?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      medical_history: {
+        Row: {
+          condition_name: string
+          created_at: string
+          diagnosis_date: string | null
+          id: string
+          notes: string | null
+          status: string | null
+          user_id: string
+        }
+        Insert: {
+          condition_name: string
+          created_at?: string
+          diagnosis_date?: string | null
+          id?: string
+          notes?: string | null
+          status?: string | null
+          user_id: string
+        }
+        Update: {
+          condition_name?: string
+          created_at?: string
+          diagnosis_date?: string | null
+          id?: string
+          notes?: string | null
+          status?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          allergies: string[] | null
+          blood_group: string | null
+          chronic_conditions: string[] | null
+          created_at: string
+          date_of_birth: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          allergies?: string[] | null
+          blood_group?: string | null
+          chronic_conditions?: string[] | null
+          created_at?: string
+          date_of_birth?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          allergies?: string[] | null
+          blood_group?: string | null
+          chronic_conditions?: string[] | null
+          created_at?: string
+          date_of_birth?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
