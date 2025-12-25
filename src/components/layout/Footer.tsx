@@ -22,7 +22,7 @@ export function Footer() {
                 <Heart className="h-5 w-5 text-primary-foreground" />
               </div>
               <span className="text-lg font-bold text-foreground">
-                Medi<span className="text-primary">Bridge</span>
+                Jeevan<span className="text-primary">Raksha</span>
               </span>
             </Link>
             <p className="text-sm text-muted-foreground">
@@ -69,7 +69,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                support@medibridge.com
+                support@jeevanraksha.com
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
@@ -81,7 +81,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 MediBridge. {t('footer.allRightsReserved')}
+            © 2024 JeevanRaksha. {t('footer.allRightsReserved')}
           </p>
           <p className="text-sm text-muted-foreground">
             {t('footer.madeWith')} <Heart className="inline h-4 w-4 text-destructive" /> {t('footer.forSavingLives')}

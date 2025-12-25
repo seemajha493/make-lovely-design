@@ -104,7 +104,7 @@ const Auth = () => {
         } else {
           toast({
             title: "Account created!",
-            description: "Welcome to MediBridge. You can now access your profile.",
+            description: "Welcome to JeevanRaksha. You can now access your profile.",
           });
           navigate("/profile");
         }
@@ -124,7 +124,7 @@ const Auth = () => {
             </div>
           </div>
           <h1 className="text-2xl font-bold text-foreground">
-            Medi<span className="text-primary">Bridge</span>
+            Jeevan<span className="text-primary">Raksha</span>
           </h1>
           <p className="text-muted-foreground mt-2">
             {isLogin ? "Sign in to access your health profile" : "Create your health profile"}

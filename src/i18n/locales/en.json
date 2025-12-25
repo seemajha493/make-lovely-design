@@ -238,10 +238,10 @@
     "severeReaction": "Showing signs of severe allergic reaction"
   },
   "auth": {
-    "welcomeBack": "Welcome back to MediBridge",
-    "createAccount": "Create your MediBridge account",
+    "welcomeBack": "Welcome back to JeevanRaksha",
+    "createAccount": "Create your JeevanRaksha account",
     "signInSubtitle": "Sign in to access emergency services and your health profile",
-    "signUpSubtitle": "Join MediBridge for quick access to emergency healthcare services",
+    "signUpSubtitle": "Join JeevanRaksha for quick access to emergency healthcare services",
     "fullName": "Full Name",
     "email": "Email",
     "password": "Password",
