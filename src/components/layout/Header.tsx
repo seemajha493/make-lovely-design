@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill, Briefcase, Shield, LayoutDashboard, ShoppingCart } from "lucide-react";
+import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill, Briefcase, Shield, LayoutDashboard, ShoppingCart, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
@@ -114,6 +114,10 @@ export function Header() {
                   <DropdownMenuItem onClick={() => navigate("/admin")}>
                     <LayoutDashboard className="h-4 w-4 mr-2" />
                     Admin Dashboard
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate("/admin/orders")}>
+                    <Package className="h-4 w-4 mr-2" />
+                    Manage Orders
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => navigate("/admin/doctors")}>
                     <Shield className="h-4 w-4 mr-2" />

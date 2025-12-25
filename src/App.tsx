@@ -26,6 +26,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Medicines from "./pages/Medicines";
 import Cart from "./pages/Cart";
 import Orders from "./pages/Orders";
+import AdminOrders from "./pages/AdminOrders";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -57,6 +58,7 @@ const App = () => (
               <Route path="/pharmacist-dashboard" element={<PharmacistDashboard />} />
               <Route path="/admin/pharmacists" element={<AdminPharmacists />} />
               <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/orders" element={<AdminOrders />} />
               <Route path="/medicines" element={<Medicines />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<Orders />} />
