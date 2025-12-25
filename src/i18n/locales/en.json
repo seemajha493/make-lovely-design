@@ -107,6 +107,8 @@
     "subtitle": "Step-by-step emergency first aid instructions",
     "importantNotice": "Important Notice",
     "warningText": "These guides are for educational purposes. Always call emergency services (108) for serious injuries. Professional medical help should be sought as soon as possible.",
+    "aiAssistant": "AI First Aid Assistant",
+    "quickGuides": "Quick Reference Guides",
     "cprTitle": "CPR (Cardiopulmonary Resuscitation)",
     "cprSteps": [
       "Check for responsiveness - tap the person and shout 'Are you okay?'",
