@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill } from "lucide-react";
+import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -61,14 +61,24 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-2">
-          <Button variant="outline" size="sm" onClick={() => navigate("/doctor-auth")} className="gap-2">
-            <Stethoscope className="h-4 w-4" />
-            For Doctors
-          </Button>
-          <Button variant="outline" size="sm" onClick={() => navigate("/pharmacist-auth")} className="gap-2">
-            <Pill className="h-4 w-4" />
-            For Pharmacists
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="gap-2">
+                <Briefcase className="h-4 w-4" />
+                Medical Professionals
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-popover">
+              <DropdownMenuItem onClick={() => navigate("/doctor-auth")}>
+                <Stethoscope className="h-4 w-4 mr-2" />
+                For Doctors
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate("/pharmacist-auth")}>
+                <Pill className="h-4 w-4 mr-2" />
+                For Pharmacists
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
