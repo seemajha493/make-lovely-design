@@ -238,10 +238,10 @@
     "severeReaction": "गंभीर एलर्जी प्रतिक्रिया के संकेत दिखा रहा है"
   },
   "auth": {
-    "welcomeBack": "MediBridge में आपका स्वागत है",
-    "createAccount": "अपना MediBridge खाता बनाएं",
+    "welcomeBack": "JeevanRaksha में आपका स्वागत है",
+    "createAccount": "अपना JeevanRaksha खाता बनाएं",
     "signInSubtitle": "आपातकालीन सेवाओं और अपनी स्वास्थ्य प्रोफाइल तक पहुंचने के लिए साइन इन करें",
-    "signUpSubtitle": "आपातकालीन स्वास्थ्य सेवाओं तक त्वरित पहुंच के लिए MediBridge से जुड़ें",
+    "signUpSubtitle": "आपातकालीन स्वास्थ्य सेवाओं तक त्वरित पहुंच के लिए JeevanRaksha से जुड़ें",
     "fullName": "पूरा नाम",
     "email": "ईमेल",
     "password": "पासवर्ड",

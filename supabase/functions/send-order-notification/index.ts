@@ -64,7 +64,7 @@ const handler = async (req: Request): Promise<Response> => {
     const orderIdShort = orderId.slice(0, 8).toUpperCase();
 
     const emailResponse = await resend.emails.send({
-      from: "MediBridge <onboarding@resend.dev>",
+      from: "JeevanRaksha <onboarding@resend.dev>",
       to: [customerEmail],
       subject: `${statusConfig.subject} - Order #${orderIdShort}`,
       html: `
@@ -79,7 +79,7 @@ const handler = async (req: Request): Promise<Response> => {
             <div style="background: white; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden;">
               <!-- Header -->
               <div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); padding: 32px; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 24px;">MediBridge</h1>
+                <h1 style="color: white; margin: 0; font-size: 24px;">JeevanRaksha</h1>
                 <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 14px;">Your Healthcare Companion</p>
               </div>
               
@@ -119,7 +119,7 @@ const handler = async (req: Request): Promise<Response> => {
               <!-- Footer -->
               <div style="background: #f8fafc; padding: 20px 32px; text-align: center; border-top: 1px solid #e2e8f0;">
                 <p style="color: #94a3b8; font-size: 12px; margin: 0;">
-                  © ${new Date().getFullYear()} MediBridge. All rights reserved.
+                  © ${new Date().getFullYear()} JeevanRaksha. All rights reserved.
                 </p>
               </div>
             </div>

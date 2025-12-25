@@ -68,7 +68,7 @@ export function Header() {
             <Heart className="h-4 w-4 text-primary-foreground" />
           </div>
           <span className="text-lg font-bold text-foreground hidden sm:block">
-            Medi<span className="text-primary">Bridge</span>
+            Jeevan<span className="text-primary">Raksha</span>
           </span>
         </Link>
 
