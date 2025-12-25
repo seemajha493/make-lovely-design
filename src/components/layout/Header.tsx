@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill, Briefcase, Shield, LayoutDashboard } from "lucide-react";
+import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill, Briefcase, Shield, LayoutDashboard, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { useCart } from "@/hooks/useCart";
 import { supabase } from "@/integrations/supabase/client";
 import {
   DropdownMenu,
@@ -11,13 +12,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
 
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Hospitals", path: "/hospitals" },
+  { name: "Medicines", path: "/medicines" },
   { name: "Pharmacies", path: "/pharmacies" },
   { name: "First Aid", path: "/first-aid" },
-  { name: "Prescription", path: "/prescription" },
   { name: "Emergency Contacts", path: "/contacts" },
 ];
 
@@ -27,6 +29,7 @@ export function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const checkAdminRole = async () => {
@@ -75,6 +78,20 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-2">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="gap-2 relative"
+            onClick={() => navigate("/cart")}
+          >
+            <ShoppingCart className="h-4 w-4" />
+            Cart
+            {totalItems > 0 && (
+              <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                {totalItems}
+              </Badge>
+            )}
+          </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="gap-2">
@@ -122,6 +139,10 @@ export function Header() {
                 <DropdownMenuItem onClick={() => navigate("/profile")}>
                   <User className="h-4 w-4 mr-2" />
                   My Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate("/orders")}>
+                  <ShoppingCart className="h-4 w-4 mr-2" />
+                  My Orders
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleSignOut}>
