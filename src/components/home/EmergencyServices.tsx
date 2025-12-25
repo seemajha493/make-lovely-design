@@ -39,7 +39,7 @@ const services = [
   },
   {
     icon: Users,
-    title: "Doctor Connect",
+    title: "Doctor Video Connect",
     description: "24/7 video consultations with verified medical professionals",
     href: "/doctors",
     color: "bg-success/10 text-success",
