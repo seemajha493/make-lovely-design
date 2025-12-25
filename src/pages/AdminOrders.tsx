@@ -38,11 +38,9 @@ interface Order {
   shipping_phone: string;
   notes: string | null;
   created_at: string;
+  customer_email: string | null;
+  customer_name: string | null;
   items: OrderItem[];
-  profile?: {
-    full_name: string | null;
-    email?: string;
-  };
 }
 
 const statusOptions = [
@@ -118,20 +116,12 @@ export default function AdminOrders() {
             `)
             .eq('order_id', order.id);
 
-          // Fetch user profile
-          const { data: profileData } = await supabase
-            .from('profiles')
-            .select('full_name')
-            .eq('user_id', order.user_id)
-            .maybeSingle();
-
           return {
             ...order,
             items: itemsData?.map(item => ({
               ...item,
               medicine: item.medicines as OrderItem['medicine']
-            })) || [],
-            profile: profileData
+            })) || []
           };
         })
       );
@@ -159,29 +149,21 @@ export default function AdminOrders() {
       const order = orders.find(o => o.id === orderId);
       
       // Send email notification
-      if (order) {
-        // Get user email from auth
-        const { data: userData } = await supabase.auth.admin.getUserById(order.user_id).catch(() => ({ data: null }));
-        
-        // Try to get email from profiles or use a fallback approach
-        const customerEmail = order.profile?.email;
-        
-        if (customerEmail) {
-          try {
-            await supabase.functions.invoke('send-order-notification', {
-              body: {
-                orderId: order.id,
-                newStatus,
-                customerEmail,
-                customerName: order.profile?.full_name || 'Customer',
-                orderTotal: order.total_amount
-              }
-            });
-            console.log('Email notification sent successfully');
-          } catch (emailError) {
-            console.error('Failed to send email notification:', emailError);
-            // Don't fail the status update if email fails
-          }
+      if (order && order.customer_email) {
+        try {
+          await supabase.functions.invoke('send-order-notification', {
+            body: {
+              orderId: order.id,
+              newStatus,
+              customerEmail: order.customer_email,
+              customerName: order.customer_name || 'Customer',
+              orderTotal: order.total_amount
+            }
+          });
+          console.log('Email notification sent successfully');
+        } catch (emailError) {
+          console.error('Failed to send email notification:', emailError);
+          // Don't fail the status update if email fails
         }
       }
 
@@ -202,7 +184,7 @@ export default function AdminOrders() {
     const matchesSearch = 
       order.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.shipping_city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      order.profile?.full_name?.toLowerCase().includes(searchQuery.toLowerCase());
+      order.customer_name?.toLowerCase().includes(searchQuery.toLowerCase());
     
     const matchesStatus = statusFilter === "all" || order.status === statusFilter;
     
@@ -408,7 +390,7 @@ export default function AdminOrders() {
                           <User className="h-4 w-4 text-muted-foreground mt-0.5" />
                           <div>
                             <p className="text-sm font-medium">
-                              {order.profile?.full_name || 'Customer'}
+                              {order.customer_name || 'Customer'}
                             </p>
                             <p className="text-xs text-muted-foreground">Customer</p>
                           </div>

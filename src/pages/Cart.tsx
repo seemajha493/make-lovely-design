@@ -68,6 +68,19 @@ export default function Cart() {
     setErrors({});
 
     try {
+      // Get user email for notifications
+      const { data: { user: authUser } } = await supabase.auth.getUser();
+      const userEmail = authUser?.email || '';
+      
+      // Get user's name from profile
+      const { data: profileData } = await supabase
+        .from('profiles')
+        .select('full_name')
+        .eq('user_id', user.id)
+        .maybeSingle();
+      
+      const userName = profileData?.full_name || 'Customer';
+
       // Create order
       const { data: order, error: orderError } = await supabase
         .from('orders')
@@ -78,7 +91,9 @@ export default function Cart() {
           shipping_city: formData.city,
           shipping_phone: formData.phone,
           notes: formData.notes || null,
-          status: 'pending'
+          status: 'pending',
+          customer_email: userEmail,
+          customer_name: userName
         })
         .select()
         .single();
