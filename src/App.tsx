@@ -14,6 +14,9 @@ import BloodBanks from "./pages/BloodBanks";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import Prescription from "./pages/Prescription";
+import DoctorAuth from "./pages/DoctorAuth";
+import DoctorDashboard from "./pages/DoctorDashboard";
+import AdminDoctors from "./pages/AdminDoctors";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +39,9 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/prescription" element={<Prescription />} />
+            <Route path="/doctor-auth" element={<DoctorAuth />} />
+            <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+            <Route path="/admin/doctors" element={<AdminDoctors />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
