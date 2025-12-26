@@ -9,6 +9,7 @@ import { EmergencyContacts } from "@/components/home/EmergencyContacts";
 import { MedicinePreview } from "@/components/home/MedicinePreview";
 import { PrescriptionPreview } from "@/components/home/PrescriptionPreview";
 import { HealthcareHero } from "@/components/home/HealthcareHero";
+import { Testimonials } from "@/components/home/Testimonials";
 import { RakshaChatbot } from "@/components/RakshaChatbot";
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
         <HealthcareHero />
         <NearbyHospitals />
         <FirstAidPreview />
+        <Testimonials />
         <EmergencyContacts />
       </main>
       <Footer />
