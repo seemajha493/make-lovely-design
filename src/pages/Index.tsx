@@ -6,6 +6,9 @@ import { EmergencyServices } from "@/components/home/EmergencyServices";
 import { NearbyHospitals } from "@/components/home/NearbyHospitals";
 import { FirstAidPreview } from "@/components/home/FirstAidPreview";
 import { EmergencyContacts } from "@/components/home/EmergencyContacts";
+import { MedicinePreview } from "@/components/home/MedicinePreview";
+import { PrescriptionPreview } from "@/components/home/PrescriptionPreview";
+import { HealthcareHero } from "@/components/home/HealthcareHero";
 import { RakshaChatbot } from "@/components/RakshaChatbot";
 
 const Index = () => {
@@ -15,6 +18,9 @@ const Index = () => {
       <main className="flex-1">
         <HeroSection />
         <EmergencyServices />
+        <MedicinePreview />
+        <PrescriptionPreview />
+        <HealthcareHero />
         <NearbyHospitals />
         <FirstAidPreview />
         <EmergencyContacts />
