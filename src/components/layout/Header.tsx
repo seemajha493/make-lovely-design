@@ -21,6 +21,7 @@ const mainNavLinks = [
   { nameKey: "common.hospitals", path: "/hospitals", icon: Hospital },
   { nameKey: "common.medicines", path: "/medicines", icon: Pill },
   { nameKey: "common.appointments", path: "/appointments", icon: CalendarCheck },
+  { nameKey: "common.insurance", path: "/insurance", icon: Shield },
   { nameKey: "common.firstAid", path: "/first-aid", icon: Cross },
 ];
 
@@ -169,6 +170,10 @@ export function Header() {
                   <DropdownMenuItem onClick={() => navigate("/orders")}>
                     <Package className="h-4 w-4 mr-2" />
                     My Orders
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate("/insurance/dashboard")}>
+                    <Shield className="h-4 w-4 mr-2" />
+                    My Insurance
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuLabel className="font-normal">
