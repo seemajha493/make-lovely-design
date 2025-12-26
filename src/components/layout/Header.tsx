@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill, Shield, LayoutDashboard, ShoppingCart, Package, ChevronDown, Hospital, Cross, BookOpen, Users } from "lucide-react";
+import { Menu, X, Phone, Heart, User, LogOut, Stethoscope, Pill, Shield, LayoutDashboard, ShoppingCart, Package, ChevronDown, Hospital, Cross, BookOpen, Users, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
@@ -20,6 +20,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 const mainNavLinks = [
   { nameKey: "common.hospitals", path: "/hospitals", icon: Hospital },
   { nameKey: "common.medicines", path: "/medicines", icon: Pill },
+  { nameKey: "common.appointments", path: "/appointments", icon: CalendarCheck },
   { nameKey: "common.firstAid", path: "/first-aid", icon: Cross },
 ];
 

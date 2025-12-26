@@ -14,6 +14,56 @@ export type Database = {
   }
   public: {
     Tables: {
+      appointments: {
+        Row: {
+          appointment_date: string
+          appointment_time: string
+          created_at: string
+          doctor_id: string
+          id: string
+          notes: string | null
+          reason: string | null
+          status: string
+          updated_at: string
+          user_id: string
+          visit_type: string
+        }
+        Insert: {
+          appointment_date: string
+          appointment_time: string
+          created_at?: string
+          doctor_id: string
+          id?: string
+          notes?: string | null
+          reason?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+          visit_type?: string
+        }
+        Update: {
+          appointment_date?: string
+          appointment_time?: string
+          created_at?: string
+          doctor_id?: string
+          id?: string
+          notes?: string | null
+          reason?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+          visit_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "appointments_doctor_id_fkey"
+            columns: ["doctor_id"]
+            isOneToOne: false
+            referencedRelation: "doctors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       blood_donation_records: {
         Row: {
           blood_bank_name: string
