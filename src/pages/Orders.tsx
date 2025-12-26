@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Package, Clock, CheckCircle, Truck, XCircle, ArrowLeft, ShoppingBag } from "lucide-react";
+import { Package, Clock, CheckCircle, Truck, XCircle, ArrowLeft, ShoppingBag, Banknote, CreditCard } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +31,8 @@ interface Order {
   shipping_phone: string;
   notes: string | null;
   created_at: string;
+  payment_method: string;
+  payment_status: string;
   items: OrderItem[];
 }
 
@@ -196,10 +198,31 @@ export default function Orders() {
 
                       <Separator />
 
-                      {/* Order Total */}
-                      <div className="flex justify-between font-semibold">
-                        <span>Total</span>
-                        <span className="text-primary">₹{order.total_amount.toFixed(2)}</span>
+                      {/* Order Total & Payment */}
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          {order.payment_method === 'online' ? (
+                            <div className="flex items-center gap-1.5 text-sm">
+                              <CreditCard className="h-4 w-4 text-primary" />
+                              <span className="font-medium">Online Payment</span>
+                              <Badge variant={order.payment_status === 'paid' ? 'default' : 'secondary'} className="text-xs">
+                                {order.payment_status === 'paid' ? 'Paid' : 'Pending'}
+                              </Badge>
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-1.5 text-sm">
+                              <Banknote className="h-4 w-4 text-amber-600" />
+                              <span className="font-medium">Cash on Delivery</span>
+                              <Badge variant="secondary" className="text-xs">
+                                {order.payment_status === 'paid' ? 'Paid' : 'Pay on Delivery'}
+                              </Badge>
+                            </div>
+                          )}
+                        </div>
+                        <div className="font-semibold">
+                          <span className="text-muted-foreground mr-2">Total:</span>
+                          <span className="text-primary">₹{order.total_amount.toFixed(2)}</span>
+                        </div>
                       </div>
 
                       {/* Delivery Info */}
