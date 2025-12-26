@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
-import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft, Package, CreditCard } from "lucide-react";
+import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft, Package, Banknote, Truck } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
@@ -81,7 +81,7 @@ export default function Cart() {
       
       const userName = profileData?.full_name || 'Customer';
 
-      // Create order
+      // Create order with COD payment method
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
@@ -93,7 +93,9 @@ export default function Cart() {
           notes: formData.notes || null,
           status: 'pending',
           customer_email: userEmail,
-          customer_name: userName
+          customer_name: userName,
+          payment_method: 'cod',
+          payment_status: 'pending'
         })
         .select()
         .single();
@@ -260,7 +262,7 @@ export default function Cart() {
                       className="w-full gap-2"
                       onClick={() => setIsCheckingOut(true)}
                     >
-                      <CreditCard className="h-4 w-4" />
+                      <Banknote className="h-4 w-4" />
                       Proceed to Checkout
                     </Button>
                   ) : (
@@ -320,7 +322,30 @@ export default function Cart() {
                         />
                       </div>
 
-                      <div className="flex gap-2">
+                      {/* Payment Method */}
+                      <div className="space-y-3 pt-2">
+                        <Label>Payment Method</Label>
+                        <div className="p-4 border-2 border-primary rounded-lg bg-primary/5">
+                          <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                              <Banknote className="h-5 w-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="font-medium text-foreground">Cash on Delivery</p>
+                              <p className="text-xs text-muted-foreground">Pay when you receive your order</p>
+                            </div>
+                            <div className="h-5 w-5 rounded-full bg-primary flex items-center justify-center">
+                              <div className="h-2 w-2 rounded-full bg-white" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Truck className="h-4 w-4" />
+                          <span>Delivery within 2-5 business days</span>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2 pt-2">
                         <Button 
                           variant="outline"
                           className="flex-1"
@@ -333,7 +358,7 @@ export default function Cart() {
                           onClick={handlePlaceOrder}
                           disabled={isProcessing}
                         >
-                          {isProcessing ? "Processing..." : "Place Order"}
+                          {isProcessing ? "Processing..." : "Place Order (COD)"}
                         </Button>
                       </div>
                     </div>
