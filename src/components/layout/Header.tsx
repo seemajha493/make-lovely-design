@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const mainNavLinks = [
   { nameKey: "common.hospitals", path: "/hospitals", icon: Hospital },
@@ -129,8 +130,10 @@ export function Header() {
           </DropdownMenu>
         </nav>
 
-        {/* Right Section */}
         <div className="hidden lg:flex items-center gap-1">
+          {/* Theme Toggle */}
+          <ThemeToggle />
+          
           {/* Language Switcher */}
           <LanguageSwitcher />
           
@@ -247,8 +250,8 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Mobile: Language + Cart + Menu */}
         <div className="flex lg:hidden items-center gap-1">
+          <ThemeToggle />
           <LanguageSwitcher />
           <Button 
             variant="ghost" 
