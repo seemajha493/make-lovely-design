@@ -2,8 +2,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SOSButton } from "@/components/SOSButton";
 import { HeroSection } from "@/components/home/HeroSection";
-import { EmergencyServices } from "@/components/home/EmergencyServices";
-import { EmergencyContacts } from "@/components/home/EmergencyContacts";
+import { EmergencyHub } from "@/components/home/EmergencyHub";
 import { MedicinePreview } from "@/components/home/MedicinePreview";
 import { PrescriptionPreview } from "@/components/home/PrescriptionPreview";
 import { HealthcareHero } from "@/components/home/HealthcareHero";
@@ -16,12 +15,11 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <EmergencyServices />
+        <EmergencyHub />
         <MedicinePreview />
         <PrescriptionPreview />
         <HealthcareHero />
         <Testimonials />
-        <EmergencyContacts />
       </main>
       <Footer />
       <SOSButton />
