@@ -3,8 +3,6 @@ import { Footer } from "@/components/layout/Footer";
 import { SOSButton } from "@/components/SOSButton";
 import { HeroSection } from "@/components/home/HeroSection";
 import { EmergencyServices } from "@/components/home/EmergencyServices";
-import { NearbyHospitals } from "@/components/home/NearbyHospitals";
-import { FirstAidPreview } from "@/components/home/FirstAidPreview";
 import { EmergencyContacts } from "@/components/home/EmergencyContacts";
 import { MedicinePreview } from "@/components/home/MedicinePreview";
 import { PrescriptionPreview } from "@/components/home/PrescriptionPreview";
@@ -22,8 +20,6 @@ const Index = () => {
         <MedicinePreview />
         <PrescriptionPreview />
         <HealthcareHero />
-        <NearbyHospitals />
-        <FirstAidPreview />
         <Testimonials />
         <EmergencyContacts />
       </main>
