@@ -1,5 +1,6 @@
 import { Phone, Siren, Flame, Shield, Baby, Heart, AlertTriangle } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { EmergencyAIAssistant } from "./EmergencyAIAssistant";
 
 export function EmergencyContacts() {
   const { t } = useTranslation();
@@ -33,7 +34,7 @@ export function EmergencyContacts() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 mb-12">
           {contacts.map((contact, index) => (
             <a
               key={contact.number}
@@ -52,6 +53,11 @@ export function EmergencyContacts() {
               </span>
             </a>
           ))}
+        </div>
+
+        {/* AI Emergency Assistant */}
+        <div className="max-w-2xl mx-auto">
+          <EmergencyAIAssistant />
         </div>
       </div>
     </section>
