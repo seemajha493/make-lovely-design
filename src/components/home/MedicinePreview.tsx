@@ -33,15 +33,15 @@ export function MedicinePreview() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+    <section className="py-12 md:py-16 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+      <div className="absolute top-10 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />
 
       <div className="container relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left - Content */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
                 <Pill className="h-4 w-4" />
