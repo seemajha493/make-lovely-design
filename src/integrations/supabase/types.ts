@@ -213,6 +213,113 @@ export type Database = {
         }
         Relationships: []
       }
+      insurance_claims: {
+        Row: {
+          amount_approved: number | null
+          amount_claimed: number
+          claim_number: string
+          claim_type: string
+          created_at: string
+          description: string
+          documents: string[] | null
+          id: string
+          notes: string | null
+          policy_id: string
+          reviewed_at: string | null
+          status: string
+          submitted_at: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount_approved?: number | null
+          amount_claimed: number
+          claim_number: string
+          claim_type: string
+          created_at?: string
+          description: string
+          documents?: string[] | null
+          id?: string
+          notes?: string | null
+          policy_id: string
+          reviewed_at?: string | null
+          status?: string
+          submitted_at?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount_approved?: number | null
+          amount_claimed?: number
+          claim_number?: string
+          claim_type?: string
+          created_at?: string
+          description?: string
+          documents?: string[] | null
+          id?: string
+          notes?: string | null
+          policy_id?: string
+          reviewed_at?: string | null
+          status?: string
+          submitted_at?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "insurance_claims_policy_id_fkey"
+            columns: ["policy_id"]
+            isOneToOne: false
+            referencedRelation: "user_insurance_policies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      insurance_plans: {
+        Row: {
+          benefits: string[] | null
+          coverage_amount: number
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean | null
+          name: string
+          premium_monthly: number
+          premium_yearly: number
+          type: string
+          updated_at: string
+          waiting_period_days: number | null
+        }
+        Insert: {
+          benefits?: string[] | null
+          coverage_amount: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          premium_monthly: number
+          premium_yearly: number
+          type?: string
+          updated_at?: string
+          waiting_period_days?: number | null
+        }
+        Update: {
+          benefits?: string[] | null
+          coverage_amount?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          premium_monthly?: number
+          premium_yearly?: number
+          type?: string
+          updated_at?: string
+          waiting_period_days?: number | null
+        }
+        Relationships: []
+      }
       medical_history: {
         Row: {
           condition_name: string
@@ -493,6 +600,56 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      user_insurance_policies: {
+        Row: {
+          created_at: string
+          end_date: string
+          id: string
+          payment_frequency: string
+          plan_id: string
+          policy_number: string
+          premium_amount: number
+          start_date: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          end_date: string
+          id?: string
+          payment_frequency?: string
+          plan_id: string
+          policy_number: string
+          premium_amount: number
+          start_date: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          end_date?: string
+          id?: string
+          payment_frequency?: string
+          plan_id?: string
+          policy_number?: string
+          premium_amount?: number
+          start_date?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_insurance_policies_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "insurance_plans"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
