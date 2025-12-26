@@ -8,3 +8,9 @@ verify_jwt = false
 
 [functions.send-order-notification]
 verify_jwt = true
+
+[functions.first-aid-chat]
+verify_jwt = false
+
+[functions.raksha-chat]
+verify_jwt = false
