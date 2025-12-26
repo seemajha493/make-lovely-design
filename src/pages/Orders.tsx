@@ -10,6 +10,18 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
+import { toast } from "sonner";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 interface OrderItem {
   id: string;
@@ -45,9 +57,10 @@ const statusConfig: Record<string, { icon: React.ElementType; color: string; lab
   cancelled: { icon: XCircle, color: "bg-destructive text-destructive-foreground", label: "Cancelled" }
 };
 
-export default function Orders() {
+  export default function Orders() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  const [cancellingOrderId, setCancellingOrderId] = useState<string | null>(null);
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -98,7 +111,32 @@ export default function Orders() {
     } catch (error) {
       console.error('Error fetching orders:', error);
     } finally {
-      setLoading(false);
+    setLoading(false);
+    }
+  };
+
+  const handleCancelOrder = async (orderId: string) => {
+    setCancellingOrderId(orderId);
+    try {
+      const { error } = await supabase
+        .from('orders')
+        .update({ status: 'cancelled' })
+        .eq('id', orderId)
+        .eq('user_id', user?.id);
+
+      if (error) throw error;
+
+      setOrders(prev => 
+        prev.map(order => 
+          order.id === orderId ? { ...order, status: 'cancelled' } : order
+        )
+      );
+      toast.success('Order cancelled successfully');
+    } catch (error) {
+      console.error('Error cancelling order:', error);
+      toast.error('Failed to cancel order');
+    } finally {
+      setCancellingOrderId(null);
     }
   };
 
@@ -173,10 +211,44 @@ export default function Orders() {
                           Placed on {format(new Date(order.created_at), 'PPP')}
                         </p>
                       </div>
-                      <Badge className={status.color}>
-                        <StatusIcon className="h-3 w-3 mr-1" />
-                        {status.label}
-                      </Badge>
+                      <div className="flex items-center gap-3">
+                        <Badge className={status.color}>
+                          <StatusIcon className="h-3 w-3 mr-1" />
+                          {status.label}
+                        </Badge>
+                        {order.status === 'pending' && (
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button 
+                                variant="outline" 
+                                size="sm"
+                                className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                              >
+                                <XCircle className="h-4 w-4 mr-1" />
+                                Cancel
+                              </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>Cancel Order?</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  Are you sure you want to cancel this order? This action cannot be undone.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Keep Order</AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={() => handleCancelOrder(order.id)}
+                                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                  disabled={cancellingOrderId === order.id}
+                                >
+                                  {cancellingOrderId === order.id ? 'Cancelling...' : 'Yes, Cancel Order'}
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
+                        )}
+                      </div>
                     </div>
                   </CardHeader>
                   <CardContent>
