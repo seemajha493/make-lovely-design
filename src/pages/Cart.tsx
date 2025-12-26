@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
-import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft, Package, Banknote, Truck } from "lucide-react";
+import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft, Package, Banknote, Truck, CreditCard } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
@@ -28,6 +28,7 @@ export default function Cart() {
   const navigate = useNavigate();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<'cod' | 'online'>('cod');
   const [formData, setFormData] = useState({
     address: "",
     city: "",
@@ -61,6 +62,12 @@ export default function Cart() {
         }
       });
       setErrors(fieldErrors);
+      return;
+    }
+
+    // If online payment selected, redirect to payment page
+    if (paymentMethod === 'online') {
+      navigate('/payment', { state: { amount: totalAmount, formData } });
       return;
     }
 
@@ -325,7 +332,16 @@ export default function Cart() {
                       {/* Payment Method */}
                       <div className="space-y-3 pt-2">
                         <Label>Payment Method</Label>
-                        <div className="p-4 border-2 border-primary rounded-lg bg-primary/5">
+                        
+                        {/* Cash on Delivery Option */}
+                        <div 
+                          className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                            paymentMethod === 'cod' 
+                              ? 'border-primary bg-primary/5' 
+                              : 'border-border hover:border-primary/50'
+                          }`}
+                          onClick={() => setPaymentMethod('cod')}
+                        >
                           <div className="flex items-center gap-3">
                             <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
                               <Banknote className="h-5 w-5 text-primary" />
@@ -334,11 +350,39 @@ export default function Cart() {
                               <p className="font-medium text-foreground">Cash on Delivery</p>
                               <p className="text-xs text-muted-foreground">Pay when you receive your order</p>
                             </div>
-                            <div className="h-5 w-5 rounded-full bg-primary flex items-center justify-center">
-                              <div className="h-2 w-2 rounded-full bg-white" />
+                            <div className={`h-5 w-5 rounded-full border-2 flex items-center justify-center ${
+                              paymentMethod === 'cod' ? 'border-primary bg-primary' : 'border-muted-foreground'
+                            }`}>
+                              {paymentMethod === 'cod' && <div className="h-2 w-2 rounded-full bg-white" />}
                             </div>
                           </div>
                         </div>
+
+                        {/* Online Payment Option */}
+                        <div 
+                          className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                            paymentMethod === 'online' 
+                              ? 'border-primary bg-primary/5' 
+                              : 'border-border hover:border-primary/50'
+                          }`}
+                          onClick={() => setPaymentMethod('online')}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                              <CreditCard className="h-5 w-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="font-medium text-foreground">Online Payment</p>
+                              <p className="text-xs text-muted-foreground">Pay securely with card (Demo)</p>
+                            </div>
+                            <div className={`h-5 w-5 rounded-full border-2 flex items-center justify-center ${
+                              paymentMethod === 'online' ? 'border-primary bg-primary' : 'border-muted-foreground'
+                            }`}>
+                              {paymentMethod === 'online' && <div className="h-2 w-2 rounded-full bg-white" />}
+                            </div>
+                          </div>
+                        </div>
+
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Truck className="h-4 w-4" />
                           <span>Delivery within 2-5 business days</span>
@@ -358,7 +402,7 @@ export default function Cart() {
                           onClick={handlePlaceOrder}
                           disabled={isProcessing}
                         >
-                          {isProcessing ? "Processing..." : "Place Order (COD)"}
+                          {isProcessing ? "Processing..." : paymentMethod === 'online' ? "Proceed to Pay" : "Place Order (COD)"}
                         </Button>
                       </div>
                     </div>
