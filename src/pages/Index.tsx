@@ -6,6 +6,7 @@ import { EmergencyServices } from "@/components/home/EmergencyServices";
 import { NearbyHospitals } from "@/components/home/NearbyHospitals";
 import { FirstAidPreview } from "@/components/home/FirstAidPreview";
 import { EmergencyContacts } from "@/components/home/EmergencyContacts";
+import { RakshaChatbot } from "@/components/RakshaChatbot";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       </main>
       <Footer />
       <SOSButton />
+      <RakshaChatbot />
     </div>
   );
 };
