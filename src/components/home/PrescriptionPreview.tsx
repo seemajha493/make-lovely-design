@@ -33,7 +33,7 @@ export function PrescriptionPreview() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
+    <section className="py-12 md:py-16 bg-muted/30 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
@@ -42,7 +42,7 @@ export function PrescriptionPreview() {
       </div>
 
       <div className="container relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left - Image */}
           <div className="relative order-2 lg:order-1">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50">
@@ -66,7 +66,7 @@ export function PrescriptionPreview() {
           </div>
 
           {/* Right - Content */}
-          <div className="space-y-8 order-1 lg:order-2">
+          <div className="space-y-6 order-1 lg:order-2">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-4">
                 <Sparkles className="h-4 w-4" />
