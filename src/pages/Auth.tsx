@@ -65,10 +65,17 @@ const Auth = () => {
       if (isLogin) {
         const { error } = await signIn(email, password);
         if (error) {
+          console.error("Sign in error:", error);
           if (error.message.includes("Invalid login credentials")) {
             toast({
               title: "Login failed",
-              description: "Invalid email or password. Please try again.",
+              description: "Invalid email or password. Please check your credentials and try again.",
+              variant: "destructive",
+            });
+          } else if (error.message.includes("Email not confirmed")) {
+            toast({
+              title: "Email not confirmed",
+              description: "Please check your email and confirm your account before logging in.",
               variant: "destructive",
             });
           } else {
@@ -83,17 +90,19 @@ const Auth = () => {
             title: "Welcome back!",
             description: "You have successfully logged in.",
           });
-          navigate("/profile");
+          // Navigation will happen automatically via useEffect when user state updates
         }
       } else {
         const { error } = await signUp(email, password, fullName);
         if (error) {
-          if (error.message.includes("already registered")) {
+          console.error("Sign up error:", error);
+          if (error.message.includes("already registered") || error.message.includes("User already registered")) {
             toast({
               title: "Account exists",
               description: "This email is already registered. Please log in instead.",
               variant: "destructive",
             });
+            setIsLogin(true);
           } else {
             toast({
               title: "Sign up failed",
@@ -106,7 +115,7 @@ const Auth = () => {
             title: "Account created!",
             description: "Welcome to JeevanRaksha. You can now access your profile.",
           });
-          navigate("/profile");
+          // Navigation will happen automatically via useEffect when user state updates
         }
       }
     } finally {
