@@ -1,19 +1,37 @@
+import { useState, useEffect } from "react";
 import { Search, MapPin, Clock, Heart, Shield, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
+import heroDoctors from "@/assets/hero-doctors.jpg";
+
+const heroImages = [heroBg, heroDoctors];
 
 export function HeroSection() {
   const { t } = useTranslation();
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative overflow-hidden py-20 md:py-32">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background/80 dark:from-background/70 dark:via-background/60 dark:to-background/85" />
-      </div>
+      {/* Slideshow Background Images */}
+      {heroImages.map((img, index) => (
+        <div
+          key={index}
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+          style={{ opacity: currentImage === index ? 1 : 0 }}
+        >
+          <img src={img} alt="" className="w-full h-full object-cover" />
+        </div>
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background/80 dark:from-background/70 dark:via-background/60 dark:to-background/85" />
 
       {/* Animated Background Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
