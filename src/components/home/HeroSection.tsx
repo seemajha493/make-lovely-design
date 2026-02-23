@@ -12,17 +12,14 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/85 dark:bg-background/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background/80 dark:from-background/70 dark:via-background/60 dark:to-background/85" />
       </div>
 
       {/* Animated Background Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/15 rounded-full blur-3xl animate-blob" />
-        <div className="absolute top-40 -left-40 w-80 h-80 bg-secondary/15 rounded-full blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-blob" />
+        <div className="absolute top-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
       </div>
-
-      {/* Glow Effect */}
-      <div className="absolute inset-0 gradient-glow" />
 
       <div className="container relative">
         <div className="max-w-4xl mx-auto text-center">
