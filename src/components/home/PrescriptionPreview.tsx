@@ -2,7 +2,7 @@ import { FileImage, Sparkles, ArrowRight, CheckCircle, Brain, Zap } from "lucide
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import prescriptionAi from "@/assets/prescription-ai.jpg";
+import prescriptionBg from "@/assets/prescription-bg.jpg";
 
 export function PrescriptionPreview() {
   const { i18n } = useTranslation();
@@ -47,7 +47,7 @@ export function PrescriptionPreview() {
           <div className="relative order-2 lg:order-1">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50">
               <img 
-                src={prescriptionAi} 
+                src={prescriptionBg} 
                 alt="AI Prescription Reader" 
                 className="w-full h-auto object-cover"
               />
