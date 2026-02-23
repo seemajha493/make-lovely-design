@@ -2,7 +2,7 @@ import { Pill, ShoppingCart, ArrowRight, Star, Truck, Shield } from "lucide-reac
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import medicineHero from "@/assets/medicine-hero.jpg";
+import medicineBg from "@/assets/medicine-bg.jpg";
 
 export function MedicinePreview() {
   const { t, i18n } = useTranslation();
@@ -109,7 +109,7 @@ export function MedicinePreview() {
           <div className="relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50">
               <img 
-                src={medicineHero} 
+                src={medicineBg} 
                 alt="Online Medicine Ordering" 
                 className="w-full h-auto object-cover"
               />
