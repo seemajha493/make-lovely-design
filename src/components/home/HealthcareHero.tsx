@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import healthcareHero from "@/assets/healthcare-hero.jpg";
+import doctorTeam from "@/assets/doctor-team.jpg";
 
 export function HealthcareHero() {
   const { i18n } = useTranslation();
@@ -9,7 +9,7 @@ export function HealthcareHero() {
       <div className="container">
         <div className="relative rounded-2xl overflow-hidden shadow-lg">
           <img 
-            src={healthcareHero} 
+            src={doctorTeam} 
             alt="Healthcare Professionals" 
             className="w-full h-48 md:h-64 object-cover object-top"
           />

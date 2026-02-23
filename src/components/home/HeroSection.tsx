@@ -2,31 +2,27 @@ import { Search, MapPin, Clock, Heart, Shield, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import heroBg from "@/assets/hero-bg.jpg";
 
 export function HeroSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-32" style={{ background: "var(--gradient-hero)" }}>
-      {/* Animated Background Blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-blob" />
-        <div className="absolute top-40 -left-40 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-40 left-1/2 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-blob animation-delay-4000" />
+    <section className="relative overflow-hidden py-20 md:py-32">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-background/85 dark:bg-background/90" />
       </div>
 
-      {/* Mesh Gradient Overlay */}
-      <div className="absolute inset-0 gradient-mesh opacity-60" />
+      {/* Animated Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/15 rounded-full blur-3xl animate-blob" />
+        <div className="absolute top-40 -left-40 w-80 h-80 bg-secondary/15 rounded-full blur-3xl animate-blob animation-delay-2000" />
+      </div>
 
       {/* Glow Effect */}
       <div className="absolute inset-0 gradient-glow" />
-
-      {/* Subtle Pattern */}
-      <div className="absolute inset-0 opacity-[0.015]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
 
       <div className="container relative">
         <div className="max-w-4xl mx-auto text-center">
